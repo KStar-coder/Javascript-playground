@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | Edit and remove elements in DOM</title>
+</head>
+
+<body style="background-color: #212121; color : white">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+
+<script>
+
+    // creating a function to add li elements 
+    function addLanguage(langName) {
+        // creating a li 
+        const li = document.createElement('li');
+
+        // adding the text to the li 
+        li.innerHTML = `${langName}`
+
+        // appending it to the ul by class
+        document.querySelector('.language').appendChild(li)
+    }
+
+    // testing the function 
+    addLanguage('Python')
+    addLanguage('Ruby')
+
+    // Now the above function will traverse the entire 
+    // tree each time we want to append an li so it is not
+    // an optimized approach
+
+    // Now, let's create an optimized approach
+    function addLanguageOptimized(langName) {
+        // creating the element
+        const li = document.createElement('li')
+
+        // adding text using createTextNode which is an optimized approach
+        li.appendChild(document.createTextNode(langName))
+
+        // appending it to the document
+        document.querySelector('.language').appendChild(li)
+    }
+
+    // testing the optimized function 
+    addLanguageOptimized('C++')
+
+    // EDITING THE VALUES 
+
+    // Let's try changing the second li's value to C
+    // selecting the 2nd li using li:nth-child(2) method
+    const secondLang = document.querySelector('li:nth-child(2)')
+
+    //unoptimized
+    //secondLang.innerHTML = "C"
+
+    // Another method where we create a new li and replace it with secondLang
+    const newli = document.createElement('li')
+    newli.appendChild(document.createTextNode("C"))
+    secondLang.replaceWith(newli)
+
+
+    // removing 
+    const lastli = document.querySelector('li:last-child')
+    lastli.remove()
+
+
+
+</script>
+
+</html>

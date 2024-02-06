@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | Part 3 Learning more about NodeList</title>
+</head>
+
+<body style="background-color: #212121; color: antiquewhite;">
+    <h1></h1>
+</body>
+
+<script>
+    // creating a div element using document.createElement in javascript
+    const div = document.createElement('div')
+    console.log(div)
+    div.className = "main" // adding a class to the div
+    div.id = Math.floor(Math.random() * 10 + 1) // aise he kar rahe hai
+
+    // Setting a random attribute just for practice
+    div.setAttribute("title", "generated title")
+
+    // styling our div using javascript
+    div.style.backgroundColor = "pink"
+    div.style.color = "purple"
+    div.style.padding = "12px"
+
+    // Adding text to the div so that it is visible
+    div.innerText = "Today I saw a beautiful video of Portugal and Switzerland in youtube with my mother. "
+
+    // Another way to add text 
+    const addText = document.createTextNode("Macbook Pro M3 Pro Space Black")
+    div.appendChild(addText)
+
+
+    // Appending the div (child) to the body (carent) of the document so that it can be shown in the page
+    document.body.appendChild(div) // attaching the div to the body of the document
+</script>
+
+</html>
