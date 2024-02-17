@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events in Javascript</title>
+</head>
+
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photoshop"
+                    src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt="photoshop"></li>
+            <li><img width="200px" id="japan"
+                    src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="river"
+                    src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="owl"
+                    src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="prayer"
+                    src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    //document.querySelector('#owl').onclick = function () {
+    //    alert("Owl, a nocturnal bird")
+    //}
+    //document.querySelector('#owl').addEventListener('click', function (e) {
+    //    //alert("Owl, a nocturnal bird")
+    //    console.log(e)
+    //}, false) // false is a default value so no need to add
+
+    /*
+    What you should know :
+    type, timestamp, defaultPrevented
+    target, toElement, srcElement, currentTarget
+    clientX, clientY, screenX, screenY
+    altKey, ctrlKey, shiftKey, keyCode
+    */
+
+
+    // event propagation
+    // selecting the ul and the owl to check which message gets alerted first
+
+    /*
+    document.querySelector('#images').addEventListener('click', function (e) {
+        alert("An image has been clicked")
+    }, false)
+
+    document.querySelector('#owl').addEventListener('click', function (e) {
+        alert("The Owl has been clicked")
+        e.stopPropagation() // To avoid bubbling
+    }, false)
+
+    */
+
+
+    /*
+    OUTPUT : 
+        The Owl has been clicked 
+        An image has been clicked
+        Reason : This is called event propagation (Bubbling up)
+                 The elements inside are listened to first and then the parent elememt  
+                 # This type of event propagation is called bubbling 
+
+        If you do not want this, then set the parameters to true 
+        After setting it to true, OUTPUT : 
+            An image has been clicked 
+            The Owl has been clicked
+            # This method of event propagation is called capturing
+         
+    */
+
+    // to avoid going to google.com when it is clicked 
+    document.querySelector('#google').addEventListener('click', function (e) {
+        e.preventDefault() // preventing the default action
+        console.log('Google Clicked')
+    }, false)
+
+    // trying to remove an image by clicking it 
+    document.querySelector('#images').addEventListener('click', function (e) {
+        // we need to select the parent node for this 
+        console.log(e.target.parentNode)
+
+        if (e.target.tagName = "IMG") {
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+        }
+
+    }, false)
+
+</script>
+
+
+
+</html>
