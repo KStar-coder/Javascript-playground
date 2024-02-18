@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Part 2</title>
+</head>
+
+<body>
+    <h1>Chai Aur Code</h1>
+    <button id="stop">Stop</button>
+
+    <script>
+        // it is a method that calls the API as well
+        /*
+        setTimeout(function () {
+            console.log("Will print after 2 seconds")
+        }, 2000)
+        */
+        //setInterval(function () {
+        //    console.log("Will print after each interval of 2 seconds")
+        //}, 2000)
+
+        // TO USE THESE IN A FUNCTION 
+
+        const sayHi = function () {
+            console.log("Hi !")
+        }
+        setTimeout(sayHi, 2000) // will say hi 2 seconds after refresh
+        //setInterval(sayHi, 2000) // will keep saying hi after every 2 seconds 
+
+
+        const changeText = function () {
+            document.querySelector('h1').innerHTML = "Best JS Series"
+        }
+        setTimeout(changeText, 3000)
+
+        // Programming our button to stop the change text and sayhi before it is executed
+        document.querySelector('#stop').addEventListener('click', function (e) {
+            clearTimeout(changeText)
+            clearTimeout(sayHi)
+            console.log("stopped")
+        }, false)
+
+
+    </script>
+</body>
+
+</html>

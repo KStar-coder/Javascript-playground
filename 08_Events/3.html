@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Part 2</title>
+</head>
+
+<body style="background-color: #212121; color: aliceblue;">
+    <h1>Chai Aur Javascript</h1>
+    <button id="stop">Stop</button>
+    <button id="start">Start</button>
+
+    <script>
+        const printString = function (str) {
+            console.log(str, Date.now())
+        }
+
+        // function inside a function to start and stop interval
+        document.querySelector('#start').addEventListener('click', function (e) {
+            const printStr = function (str) {
+                console.log(str, Date.now())
+            }
+
+            const stop = setInterval(printStr, 1000, "Matt")
+
+            document.querySelector('#stop').addEventListener('click', function (e) {
+                clearInterval(stop)
+                console.log('stopped')
+            })
+
+        })
+
+    </script>
+</body>
+
+</html>
