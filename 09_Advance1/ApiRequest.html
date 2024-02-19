@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XMLHttpRequest</title>
+</head>
+
+<body style="backdrop-filter: #212121; color: aliceblue;">
+    <p> We are using the old way here called XMLHttpRequest </p>
+    <button id="button">Button</button>
+</body>
+
+<script>
+    const requestUrl = 'https://api.github.com/users/KStar-coder'
+    //XMLHttpRequest is a class so we need to create a new object to use it's properties
+    const xhr = new XMLHttpRequest()
+
+    // to track only ones we use : 
+    xhr.open('GET', requestUrl)
+
+    let profilePicLink = ''
+    // to track continuously we use 
+    xhr.onreadystatechange = function () {
+        console.log(xhr.readyState) // to see the status
+        if (xhr.readyState === 4) {
+            const data = this.responseText
+            console.log(typeof data) // string 
+            // we need to convert this string data to json to make it an object
+            const parsedData = JSON.parse(data)
+            console.log(typeof parsedData)
+            console.log(parsedData)
+            console.log(parsedData.followers)
+
+            // trying to display the profile picture of my github on the webpage 
+
+            // creating a paragraph to put the image
+            const para = document.createElement('p')
+
+            // getting the profile picture from the json object in a paragraph
+            para.innerHTML = `
+                <img src = "${parsedData.avatar_url}", alt = "Github DP", 
+                            width = "500" height = "500">
+                 `
+
+            // Selecting the button 
+            const button = document.querySelector('#button')
+            // adding the click function in the button and appending the paragraph to it on clicking
+            button.addEventListener('click', function () {
+
+                document.getElementById('button').appendChild(para)
+            }, false)
+
+
+        }
+    }
+
+
+
+    // to call open 
+    xhr.send()
+</script>
+
+</html>
