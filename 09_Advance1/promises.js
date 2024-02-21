@@ -27,6 +27,7 @@ new Promise(function (resolve, reject) {
     console.log("Async 2 resolved")
 })
 
+// Passing values to .then()
 const promiseThree = new Promise(function (resolve, reject) {
     setTimeout(function () {
         // passing values to .then 
@@ -61,6 +62,8 @@ const username = promiseFour.then((user) => {
     console.log(error)
 }).finally(() => console.log("The promise is either resolved or rejected"))
 
+
+// using async and await
 const promiseFive = new Promise(function (resolve, reject) {
     setTimeout(function () {
         let error = true;
@@ -88,6 +91,7 @@ async function consumePromiseFive() {
 
 consumePromiseFive()
 
+// fetching using async and await
 async function getAllUsers() {
     try {
         const response = await fetch('https://jsonplaceholder.typicode.com/users')
@@ -102,14 +106,20 @@ async function getAllUsers() {
 
 getAllUsers()
 
+// fetch using .then() and .catch()
 // doing the same thing using .then() and .catch()
 fetch('https://jsonplaceholder.typicode.com/users')
     .then((response) => {
         return response.json()
-
     })
     .then((data) => {
         console.log(data);
     })
     .catch((error) => console.log(error))
+
+
+/*
+ #async function and await uses try catch blocks
+ #without async and await, we use .then() and .catch()
+*/
 
