@@ -1,3 +1,4 @@
+// We will try getters and setters first in class, then in functions and lastly, in objects
 class User {
     constructor(email, password) {
         this.email = email
@@ -52,3 +53,18 @@ function Userfn(email, password) {
 
 const chai = new Userfn("chai@chai.com", "chai")
 console.log(chai.email)
+
+// trying with objects now 
+
+const coffee = {
+    _email: 'coffee@code.com',
+    _password: 'EatSleepCodeRepeat',
+
+    // GETTERS AND SETTERS 
+    get email() {
+        return this._email
+    },
+    set email(value) {
+        this._email = value
+    }
+}
