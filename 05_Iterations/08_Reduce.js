@@ -22,7 +22,7 @@ let shoppingCart = [
     }
 ]
 
-let priceToPay = shoppingCart.reduce((acc, currval) => acc + currval.price, 0) // here, 0 is the intial value of the acc
+let priceToPay = shoppingCart.reduce((acc, currval) => acc + currval.price, 0) // here, 0 is the initial value of the acc
 console.log(priceToPay)
 let cartPrice = shoppingCart.reduce((acc, curr) => acc + curr.price, 0)
 console.log(cartPrice)
