@@ -8,6 +8,7 @@ console.log(`Hello, My name is ${name} and my wannabe leetcode rank is ${rank}`)
 
 console.log(name[0]) // string has inbuilt indices like C++
 
+console.log("Seeing object:")
 console.log(name.__proto__) // To see objects
 
 // another way to declare string variables 
