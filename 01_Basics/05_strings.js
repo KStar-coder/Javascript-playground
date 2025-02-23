@@ -33,7 +33,7 @@ console.log(platformName.indexOf('e')) // multiple 'e's are there so it will ret
 const newString = new String(platformName.substring(0, 4))
 console.log(newString)
 const anotherString = name.slice(-7, -7)
-console.log(anotherString)
+console.log("anotherString" + anotherString)
 
 
 // To remove unnecessary spaces before a character starts and after it ends 
